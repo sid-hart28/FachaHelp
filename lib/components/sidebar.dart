@@ -24,6 +24,7 @@ class SideBar extends StatelessWidget {
           DrawerItemTiles(
             title: 'Discussion Forum',
             onTap: () {
+              Navigator.pop(context);
               Navigator.pushNamed(context, DiscussionScreen.id);
             },
           ),
