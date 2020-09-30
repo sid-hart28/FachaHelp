@@ -1,5 +1,6 @@
-import 'package:facha_help/screens/discussion.dart';
+import 'package:facha_help/screens/discussion_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:facha_help/screens/home_screen.dart';
 
 void main() => runApp(FachaHelp());
 
@@ -7,7 +8,11 @@ class FachaHelp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Discussion(),
+      initialRoute: HomeScreen.id,
+      routes: {
+        HomeScreen.id: (context) => HomeScreen(),
+        DiscussionScreen.id: (context) => DiscussionScreen(),
+      },
     );
   }
 }

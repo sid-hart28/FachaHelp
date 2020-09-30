@@ -2,14 +2,15 @@ import 'package:facha_help/constants.dart';
 import 'package:facha_help/soc_icons_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:facha_help/components/bluebutton.dart';
-import 'package:facha_help/components/drawerbutton.dart';
+import 'package:facha_help/components/sidebar.dart';
 
-class Discussion extends StatefulWidget {
+class DiscussionScreen extends StatefulWidget {
+  static const String id = 'discussion_screen';
   @override
-  _DiscussionState createState() => _DiscussionState();
+  _DiscussionScreenState createState() => _DiscussionScreenState();
 }
 
-class _DiscussionState extends State<Discussion> {
+class _DiscussionScreenState extends State<DiscussionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,92 +19,7 @@ class _DiscussionState extends State<Discussion> {
         backgroundColor: Color(0xFF343A40),
         title: Text('Facha Help'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              child: Text(
-                'User info',
-                style: TextStyle(color: Colors.white),
-              ),
-              decoration: BoxDecoration(
-                color: Color(0xFF343A40),
-              ),
-            ),
-            DrawerItemTiles(
-              title: 'Registration Guide',
-            ),
-            DrawerItemTiles(
-              title: 'Academics',
-            ),
-            DrawerItemTiles(
-              title: 'Fests',
-            ),
-            DrawerItemTiles(
-              title: 'Gymkhana',
-            ),
-            DrawerItemTiles(
-              title: 'Explore Varanasi',
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 18.0),
-              child: DropdownButton<String>(
-                  hint: Text(
-                    'More',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  items: [
-                    DropdownMenuItem(
-                      child: Text('Gallery'),
-                      value: 'A',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Placement Stats'),
-                      value: 'B',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('IIT BHU on web'),
-                      value: 'C',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Misc.'),
-                      value: 'D',
-                    ),
-                  ],
-                  onChanged: (value) {}),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 18.0),
-              child: DropdownButton<String>(
-                  hint: Text(
-                    'Get in Touch',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  items: [
-                    DropdownMenuItem(
-                      child: Text('About Us'),
-                      value: 'A',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Feedback'),
-                      value: 'B',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Terms and Conditions'),
-                      value: 'C',
-                    ),
-                  ],
-                  onChanged: (value) {}),
-            ),
-          ],
-        ),
-      ),
+      drawer: SideBar(),
       body: SafeArea(
         child: ListView(
           children: [
