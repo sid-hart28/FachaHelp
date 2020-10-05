@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BlueButton extends StatelessWidget {
-  BlueButton({@required this.onPressed, this.title});
+  BlueButton({@required this.onPressed, this.title, this.width});
   final Function onPressed;
   final String title;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +15,10 @@ class BlueButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(5.0),
           color: Colors.blueAccent,
           boxShadow: [
-            BoxShadow(blurRadius: 2.0, color: Colors.blueGrey),
+            BoxShadow(blurRadius: 1.0, color: Colors.blueGrey),
           ],
         ),
-        width: 50.0,
+        width: width,
         alignment: Alignment.center,
         child: Padding(
           padding: EdgeInsets.all(8.0),

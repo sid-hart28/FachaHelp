@@ -3,10 +3,6 @@ import 'drawerbutton.dart';
 import 'package:facha_help/screens/discussion_screen.dart';
 
 class SideBar extends StatelessWidget {
-  const SideBar({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -76,28 +72,29 @@ class SideBar extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 18.0),
             child: DropdownButton<String>(
-                hint: Text(
-                  'Get in Touch',
-                  style: TextStyle(
-                    color: Color(0xFF343A40),
-                    fontWeight: FontWeight.w500,
-                  ),
+              hint: Text(
+                'Get in Touch',
+                style: TextStyle(
+                  color: Color(0xFF343A40),
+                  fontWeight: FontWeight.w500,
                 ),
-                items: [
-                  DropdownMenuItem(
-                    child: Text('About Us'),
-                    value: 'A',
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Feedback'),
-                    value: 'B',
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Terms and Conditions'),
-                    value: 'C',
-                  ),
-                ],
-                onChanged: (value) {}),
+              ),
+              items: [
+                DropdownMenuItem(
+                  child: Text('About Us'),
+                  value: 'A',
+                ),
+                DropdownMenuItem(
+                  child: Text('Feedback'),
+                  value: 'B',
+                ),
+                DropdownMenuItem(
+                  child: Text('Terms and Conditions'),
+                  value: 'C',
+                ),
+              ],
+              onChanged: (value) {},
+            ),
           ),
         ],
       ),
