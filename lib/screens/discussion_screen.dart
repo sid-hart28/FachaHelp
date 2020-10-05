@@ -15,18 +15,19 @@ class DiscussionScreen extends StatefulWidget {
 class _DiscussionScreenState extends State<DiscussionScreen> {
   String question;
   String writer;
-  List<Widget> containersList = new List<Widget>();
+  List<Widget> containersList;
   DiscussionApi discussionApi = DiscussionApi();
   Future<List> futureData;
   bool showSpinner = false;
-
-  void popMenuFunc(value) {
-    print("$value clicked");
-  }
+  bool editBox = false;
+  List qid;
 
   void getContainers(List dataList) {
     containersList = [];
-    for (var i = dataList.length - 1; i >= 0; i--) {
+    qid = [];
+    int l = dataList.length;
+    for (var i = l - 1; i >= 0; i--) {
+      qid.add(dataList[l - i - 1]["_id"]);
       containersList.add(
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -64,7 +65,22 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                             height: 40.0,
                             width: 60.0,
                             child: PopupMenuButton(
-                              onSelected: popMenuFunc,
+                              onSelected: (value) async {
+                                if (value == "Delete") {
+                                  print(qid[i]);
+                                  setState(() {
+                                    showSpinner = true;
+                                  });
+                                  await discussionApi.deleteQuestion(qid[i]);
+                                  setState(() {
+                                    futureData = discussionApi.getData();
+                                    showSpinner = false;
+                                  });
+                                } else if (value == "Edit") {
+                                  print("$value clicked!");
+                                  //TODO
+                                }
+                              },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -168,7 +184,6 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                 await discussionApi.postData(question, writer);
                                 setState(() {
                                   futureData = discussionApi.getData();
-                                  showSpinner = false;
                                 });
                               },
                               title: 'Ask',
@@ -184,6 +199,7 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           getContainers(snapshot.data);
+                          showSpinner = false;
                           return (Column(
                             children: snapshot.data.length != 0
                                 ? containersList

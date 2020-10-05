@@ -26,8 +26,12 @@ class DiscussionApi {
 
   Future<void> deleteQuestion(String id) async {
     await http.delete(
-      apiUrl,
+      "$apiUrl/$id",
       headers: <String, String>{},
     );
   }
+
+  // Future<void> updateQuestion() async {
+  //   await http.patch("");
+  // }
 }
