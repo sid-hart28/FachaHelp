@@ -8,7 +8,7 @@ class BlueButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return RawMaterialButton(
       onPressed: onPressed,
       child: Container(
         decoration: BoxDecoration(
