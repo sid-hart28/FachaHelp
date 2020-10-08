@@ -256,41 +256,6 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                           },
                         ),
                       ),
-<<<<<<< HEAD
-                    ),
-                    SizedBox(height: 20.0),
-                    FutureBuilder<List>(
-                      future: futureData,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          getContainers(snapshot.data);
-                          showSpinner = false;
-                          return (Column(
-                            children: snapshot.data.length != 0
-                                ? containersList
-                                : [
-                                    Container(
-                                      height: 350.0,
-                                      color: Colors.white,
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        'Be first one to ask question here',
-                                        style: TextStyle(fontSize: 17.0),
-                                      ),
-                                    ),
-                                  ],
-                          ));
-                        } else if (snapshot.hasError) {
-                          return Text("${snapshot.error}");
-                        } else {
-                          return Center(child: CircularProgressIndicator());
-                        }
-                      },
-                    ),
-                    SizedBox(height: 20.0),
-                    FooterItems(),
-                  ],
-=======
                       TextField(
                         decoration: kTextFieldDecoration.copyWith(
                             hintText: 'Enter your first name...'),
@@ -316,7 +281,6 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                       ),
                     ],
                   ),
->>>>>>> 4df3f2f839a58c9328e0af5b04282c5959666a75
                 ),
               ),
               SizedBox(height: 20.0),
