@@ -5,6 +5,7 @@ import 'package:facha_help/components/bluebutton.dart';
 import 'package:facha_help/components/sidebar.dart';
 import 'package:facha_help/services/discussion_api.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:facha_help/components/footer_item.dart';
 
 class DiscussionScreen extends StatefulWidget {
   static const String id = 'discussion_screen';
@@ -223,28 +224,7 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                       },
                     ),
                     SizedBox(height: 20.0),
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(SocIcons.facebook),
-                            SizedBox(width: 15.0),
-                            Icon(SocIcons.instagram),
-                            SizedBox(width: 15.0),
-                            Icon(SocIcons.linkedin),
-                            SizedBox(width: 15.0),
-                            Icon(SocIcons.twitter),
-                          ],
-                        ),
-                        SizedBox(height: 10.0),
-                        Text(
-                          'Har Har Mahadev\n\nSab Lite Hai!',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 15.0),
-                        ),
-                      ],
-                    ),
+                    FooterItems(),
                   ],
                 ),
               ),

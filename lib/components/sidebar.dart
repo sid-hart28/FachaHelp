@@ -1,6 +1,8 @@
+import 'package:facha_help/screens/academics_screen.dart';
 import 'package:flutter/material.dart';
 import 'drawerbutton.dart';
 import 'package:facha_help/screens/discussion_screen.dart';
+import 'package:facha_help/screens/home_screen.dart';
 
 class SideBar extends StatelessWidget {
   @override
@@ -18,6 +20,13 @@ class SideBar extends StatelessWidget {
             ),
           ),
           DrawerItemTiles(
+            title: 'Home',
+            onTap: (){
+              Navigator.pop(context);
+              Navigator.pushNamed(context, HomeScreen.id);
+            },
+          ),
+          DrawerItemTiles(
             title: 'Discussion Forum',
             onTap: () {
               Navigator.pop(context);
@@ -29,6 +38,10 @@ class SideBar extends StatelessWidget {
           ),
           DrawerItemTiles(
             title: 'Academics',
+            onTap: (){
+              Navigator.pop(context);
+              Navigator.pushNamed(context, AcademicsScreen.id);
+            },
           ),
           DrawerItemTiles(
             title: 'Fests',
