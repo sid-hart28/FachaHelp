@@ -14,7 +14,7 @@ class FachaHelp extends StatelessWidget {
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
         DiscussionScreen.id: (context) => DiscussionScreen(),
-        AcademicsScreen.id: (context) => AcademicsScreen()
+        AcademicsScreen.id: (context) => AcademicsScreen(),
         AnswerScreen.id: (context) => AnswerScreen(),
       },
     );
