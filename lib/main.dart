@@ -2,6 +2,7 @@ import 'package:facha_help/screens/answer_screen.dart';
 import 'package:facha_help/screens/discussion_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:facha_help/screens/home_screen.dart';
+import 'package:facha_help/screens/academics_screen.dart';
 
 void main() => runApp(FachaHelp());
 
@@ -13,6 +14,7 @@ class FachaHelp extends StatelessWidget {
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
         DiscussionScreen.id: (context) => DiscussionScreen(),
+        AcademicsScreen.id: (context) => AcademicsScreen(),
         AnswerScreen.id: (context) => AnswerScreen(),
       },
     );
