@@ -1,8 +1,8 @@
+import 'package:facha_help/components/footer_item.dart';
 import 'package:facha_help/services/discussion_api.dart';
 import 'package:flutter/material.dart';
 import 'package:facha_help/constants.dart';
 import 'package:facha_help/components/bluebutton.dart';
-import 'package:facha_help/soc_icons_icons.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class AnswerScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
   bool showSpinner = false, haveData = false;
 
   Future<void> getADataList() async {
-    apiAData = await discussionApi.getAnswers("5f7df24a7ae3050017312a64");
+    apiAData = await discussionApi.getAnswers(currentQData[0]);
     getContainers(apiAData);
     setState(() {
       haveData = true;
@@ -45,10 +45,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.white,
-              ),
+              decoration: kBoxDecoration,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
                 child: Column(
@@ -83,8 +80,8 @@ class _AnswerScreenState extends State<AnswerScreen> {
                                 });
                                 await discussionApi.deleteAnswer(
                                     currentQData[0], ansIds[i]);
+                                await getADataList();
                                 setState(() {
-                                  containersAList.removeAt(l - i - 1);
                                   showSpinner = false;
                                 });
                               } else if (value == "Edit") {
@@ -136,10 +133,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
     containersAList[j] = Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: Colors.white,
-        ),
+        decoration: kBoxDecoration,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
           child: Column(
@@ -160,7 +154,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
               ),
               BlueButton(
                 width: 110,
-                title: "Edit Question",
+                title: "Edit Answer",
                 onPressed: () async {
                   setState(() {
                     showSpinner = true;
@@ -215,10 +209,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 36.0),
             children: [
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.white,
-                ),
+                decoration: kBoxDecoration,
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
@@ -255,10 +246,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
               ),
               SizedBox(height: 20.0),
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.white,
-                ),
+                decoration: kBoxDecoration,
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -308,11 +296,11 @@ class _AnswerScreenState extends State<AnswerScreen> {
                         ? containersAList
                         : [
                             Container(
-                              height: 350.0,
-                              color: Colors.white,
+                              decoration: kBoxDecoration,
+                              height: 200.0,
                               alignment: Alignment.center,
                               child: Text(
-                                'Be first one to ask question here',
+                                'Be first one to answer this question',
                                 style: TextStyle(fontSize: 17.0),
                               ),
                             ),
@@ -320,28 +308,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
                     : [CircularProgressIndicator()],
               ),
               SizedBox(height: 20.0),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(SocIcons.facebook),
-                      SizedBox(width: 15.0),
-                      Icon(SocIcons.instagram),
-                      SizedBox(width: 15.0),
-                      Icon(SocIcons.linkedin),
-                      SizedBox(width: 15.0),
-                      Icon(SocIcons.twitter),
-                    ],
-                  ),
-                  SizedBox(height: 10.0),
-                  Text(
-                    'Har Har Mahadev\n\nSab Lite Hai!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 15.0),
-                  ),
-                ],
-              ),
+              FooterItems(),
             ],
           ),
         ),

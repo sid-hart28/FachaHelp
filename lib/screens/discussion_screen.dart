@@ -42,10 +42,7 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.white,
-              ),
+              decoration: kBoxDecoration,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
                 child: Column(
@@ -83,8 +80,8 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                       showSpinner = true;
                                     });
                                     await discussionApi.deleteQuestion(qIds[i]);
+                                    await getQDataList();
                                     setState(() {
-                                      containersList.removeAt(l - i - 1);
                                       showSpinner = false;
                                     });
                                   } else if (value == "Edit") {
@@ -152,10 +149,7 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
     containersList[j] = Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: Colors.white,
-        ),
+        decoration: kBoxDecoration,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
           child: Column(
@@ -236,10 +230,7 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 36.0),
             children: [
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.white,
-                ),
+                decoration: kBoxDecoration,
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -289,8 +280,8 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                         ? containersList
                         : [
                             Container(
+                              decoration: kBoxDecoration,
                               height: 350.0,
-                              color: Colors.white,
                               alignment: Alignment.center,
                               child: Text(
                                 'Be first one to ask question here',

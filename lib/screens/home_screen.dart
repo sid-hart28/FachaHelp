@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:facha_help/components/sidebar.dart';
-import 'package:facha_help/soc_icons_icons.dart';
 import 'package:facha_help/components/footer_item.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -7,3 +7,9 @@ const kTextFieldDecoration = InputDecoration(
       borderSide: BorderSide(color: Colors.grey)),
   hintText: 'Enter a value',
 );
+
+const kBoxDecoration = BoxDecoration(
+  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+  boxShadow: [BoxShadow(blurRadius: 5.0, color: Colors.grey)],
+  color: Colors.white,
+);
